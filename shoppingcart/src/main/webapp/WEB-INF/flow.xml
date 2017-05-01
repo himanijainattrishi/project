@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+ 
+	<!-- Executed when webFlow is triggered -->
+	 <var name="cart" class="com.niit.shoppingcart.domain.Shopping"></var> 
+	<on-start>
+	<!-- demohandler is java class available through annotated Demohandler.java class.here we are calling it’s initFlow() method. -->
+	  <evaluate expression="userController.initFlow()" result="flowScope.cart"/>
+	</on-start>
+ 
+	 <!-- if not specified the first view state is the starting state -->
+	<!-- <view-state id="start" view="productdetails" model="flowScope.product">
+	   <transition on="submit" to="orderid"/>
+	</view-state> -->
+ 
+	
+	<!-- <action-state id="validate">
+		<evaluate expression="demohandler.validateDetails(userBean,messageContext)"></evaluate>
+		<transition on="success" to="confirmDetails" />
+		<transition on="failure" to="start" />
+	</action-state>
+  -->
+	<view-state id="start" view="order" model="flowScope.cart">
+		<transition on="submit" to="login" />
+	</view-state>
+	
+	 <action-state id="login">
+ <evaluate expression="shoppingController.getaddress()" result="flowScope.address"></evaluate> 
+		 <transition on="success" to="address" />
+		 </action-state>
+		 
+		 <view-state id="address" view="shipping" model="flowScope.address">
+		
+		<transition on="submit" to="insertaddress" />
+	</view-state>
+	
+	<action-state id="insertaddress">
+ <evaluate expression="userController.insertaddress(flowScope.address,messageContext)" result="flowScope.address"></evaluate> 
+		 <transition on="success" to="getadd" /> 
+		
+		 </action-state>
+		 
+		 <action-state id="getadd">
+ <evaluate expression="userController.getadd()" result="flowScope.address"></evaluate> 
+		 <transition on="success" to="thankyouid" /> 
+		
+		 </action-state>
+		 
+	
+ 	<!-- <view-state id="login" view="UserLogin" model="flowScope.cart">
+	
+		<transition on="submit" to="ordersummaryid" />
+		 
+	</view-state> -->
+	
+	<!-- <view-state id="login" view="shipping" model="flowScope.cart">
+	
+		<transition on="submit" to="thankyouid" />
+	</view-state> -->
+	<view-state id="thankyouid" view="thank" model="flowScope.address">
+	
+		<transition on="submit" to="toHome" />
+	</view-state>
+ 
+	<end-state id="toHome" view="externalRedirect:Home" />
+	
+	<!--  <end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />-->
+ 
+	<!-- these events are available in every state-->
+	<global-transitions>
+		<transition on="home" to="toHome" />
+	<!--  	<transition on="error" to="toException" />-->
+	</global-transitions>
+</flow>

@@ -1,0 +1,16 @@
+com\niit\shoppingcart\dao\impl\UserDAOimpl.class
+com\niit\shoppingcart\domain\MyCart.class
+com\niit\shoppingcart\dao\impl\ProductDAOimpl.class
+com\niit\shoppingcart\dao\impl\CartDAOimpl.class
+com\niit\shoppingcart\dao\UserDAO.class
+com\niit\shoppingcart\dao\impl\CategoryDAOimpl.class
+com\niit\shoppingcart\domain\Category.class
+com\niit\shoppingcart\config\ApplicationContextConfig.class
+com\niit\shoppingcart\dao\ProductDAO.class
+com\niit\shoppingcart\dao\impl\SupplierDAOimpl.class
+com\niit\shoppingcart\domain\Product.class
+com\niit\shoppingcart\domain\User.class
+com\niit\shoppingcart\domain\Supplier.class
+com\niit\shoppingcart\dao\CategoryDAO.class
+com\niit\shoppingcart\dao\SupplierDAO.class
+com\niit\shoppingcart\dao\CartDAO.class
