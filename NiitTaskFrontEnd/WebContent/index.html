@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app ="app">
+<head>
+<meta charset="utf-8">
+<meta name ="viewport" content ="width=device-width,initial-scale=1">
+<title>Collaboration</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/js/ngDialog.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/css/ngDialog.css" />
+
+<!-- jQuery library -->
+
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+   
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+   
+    
+        
+        </ul>
+   
+      
+    
+    </ul>
+ 
+ <div ng-if="!currentUser">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+   </div>
+   <div class="generic-container" ng-controller="UserController as ctrl">
+   <div ng-if="currentUser">
+   <ul class="nav navbar-nav navbar-right">
+  
+    
+      <li><a href="" ng-click="logout()" ng-show="currentUser.username"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+    </ul>
+    </div>
+</div>
+</nav>
+<br>
+
+
+
+
+
+
+
+
+  
+  <div class ="container">
+  <div ng-view></div>
+  </div>
+
+
+   
+<script src ="app.js"></script>
+<script src ="user/UserController.js"></script>
+<script src ="user/UserService.js"></script>
+
+	
+
+
+</body>
+</html>
